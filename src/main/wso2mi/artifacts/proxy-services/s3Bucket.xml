@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="s3Bucket" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log category="INFO" level="custom">
+                <property name="INFO " value="Checking the s3 bucket "/>
+            </log>
+            <amazons3.createBucket configKey="AWSs3Bucket_Connection1">
+                <bucketRegion>us-east-1</bucketRegion>
+                <bucketName>student</bucketName>
+            </amazons3.createBucket>
+            <log category="INFO" level="custom">
+                <property name="INFO" value="After the s3 bucket operation"/>
+            </log>
+        </inSequence>
+        <faultSequence/>
+    </target>
+</proxy>
